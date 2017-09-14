@@ -1,15 +1,19 @@
-from flask_wtf import Form
-from wtforms import StringField, PasswordField , SubmitField
-from wtforms.validators import DataRequired,Email,Length
+from flask_wtf import Form 
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, Email, Length
 
 class SignupForm(Form):
-	first_name = StringField('First name',validators=[DataRequired("Please Enter your First Name")])
- 	last_name = StringField('Last name',validators=[DataRequired("Please Enter your Last Name")])
- 	email = StringField('Email',validators=[DataRequired("Please Enter your Email"),Email("Please Enter a valid Email Address")])
- 	password= PasswordField ('Passowrd',validators=[DataRequired("Please Enter a Password"),Length(min=6,message="Passwords must be atleast 6 char long!")])
- 	submit  = SubmitField('Sign up')
+  first_name = StringField('First name', validators=[DataRequired("Please enter your first name.")])
+  last_name = StringField('Last name', validators=[DataRequired("Please enter your last name.")])
+  email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Please enter your email address.")])
+  password = PasswordField('Password', validators=[DataRequired("Please enter a password."), Length(min=6, message="Passwords must be 6 characters or more.")])
+  submit = SubmitField('Sign up')
 
 class LoginForm(Form):
-	email = StringField('Email',validators=[DataRequired("Please Enter your Email-Address"),Email("Please Enter a valid Email-Address")])
-	password =PasswordField ('Passowrd',validators=[DataRequired("Please Enter a Password")]) 
-	submit = SubmitField("Sign In")
+  email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Please enter your email address.")])
+  password = PasswordField('Password', validators=[DataRequired("Please enter a password.")])
+  submit = SubmitField("Sign in")
+
+class AddressForm(Form):
+  address = StringField('Address', validators=[DataRequired("Please enter an address.")])
+  submit = SubmitField("Search")
